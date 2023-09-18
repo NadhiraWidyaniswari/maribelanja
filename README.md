@@ -36,28 +36,58 @@ MVVM merupakan Model View ViewModel. Apabila anda ingin fokus pada tampilan apli
  - Goswami, Vivek. “Coding Ninjas Studio.” Www.codingninjas.com, 30 June 2023, www.codingninjas.com/studio/library/difference-between-mvc-mvp-and-mvvm-architecture-in-android. Accessed 13 Sept. 2023.
 
 **Tugas 3**
-**Apa perbedaan antara form POST dan form GET dalam Django?**
 
+**Apa perbedaan antara form POST dan form GET dalam Django?**
+- Setelah mengikuti tutorial 2, saya mendapatkan bahwa perbedaan dari metode POST dan GET adalah
+POST | GET
+----|-----
+POST digunakan untuk mengirimkan data yang dapat dibilang krusial dan tidak dapat dirubah serta tidak ditampilkan dalam URL sehingga tidak mudah untuk di enkripsi | menampilkan data pada web dari server yang mengembalikan HTTP
+POST bisa dipakai untuk memasukkan objek baru seperti pada kasus ini adalah produk barang kecantikan yang memiliki atribut nama, deskripsi, harga, dan tanggal dimasukkannya product | Pengiriman data dalam bentuk query string dimana nanti setiap produk saat ini memiliki ID untuk kemudahan untuk mengakses lewat URL
+Ukuran data yang ditransfer tidak memiliki batasan sehingga aman jika ingin mengirimkan data yang besar | Memiliki batasan ukuran apabila mengirimkan data lewat URL
+Dapat memodifikasi atau mengubah server, misal perbaikan deskripsi produk | Tidak memodifikasi server
 
 **Apa perbedaan utama antara XML, JSON, dan HTML dalam konteks pengiriman data?**
 XML | JSON | HTML
-----------|----------------|------------------
-Dari segi sintaks, XML documents harus memiliki root | Sintaks berkaitan dengan JavaScripts objects |
+----------|----------------|--------------
+Dari segi sintaks, XML documents harus memiliki root | Sintaks berkaitan dengan JavaScripts objects lalu key-value {}| penulisan struktur dari halaman web secara sematik, memiliki start tag, element content, dan end tag <>
+Dapat digunakan dalam berbagai macam aplikasi untuk pertukaran data, konfigurasi, simpan dokumen | Fokus pada pengembangan web dan API RESTful, JSON biasa dipakai pada web modern karena kemudahannya. | digunakan untuk menampilkan halaman web
+Fokus pada penyimpanan dan data struktural. Misal pada pertukaran data aplikasi dan sistem yang berbeda | Fokus pada objek (karena basisnya JavaScripts) dan mudah dibaca oleh manusia. Dapat digunakan untuk pengembangan web dan layanan web | basis dasar rancangan User interface dengan tampilan web
+Umum digunakan untuk pengiriman data | Umum digunakan untuk pengiriman data |kurang umum untuk digunakan pengiriman data
 
 **Mengapa JSON sering digunakan dalam pertukaran data antara aplikasi web modern?**
 - Menurut saya, dari beberapa gambar yang saya dapatkan dari metode GET di postman, saya merasa bahwa JavaScript Object Notation mudah untuk dibaca dan format yang digunakan dalam bahasa pemrograman cukup mudah berupa dictionary pasangan key dan value. Lalu pada JSON dapat digunakan bahasa pemrograman lain seperti PHP, Python, C++, dan Ruby. Pada awalnya bahasa pemrograman ini memiliki dasar JavaScript. Sehingga awal mula popularitas JSON juga diawali denngan banyaknya penggunaan JavaScript. Dan data yang tersimpan dalam JSON dapat digunakan/impor pada JavaScript.
 
-Dalam gambar yang saya lampirkan di bawah, saya juga membandingkan JSON dengan bahasa lainnya dan merasa seperti menulis biasa namun ditambah petik dua untuk deklarasi key dan value. Pengiriman data JSON juga dinilai cukup cepat dan rendah dalam ukuran sehingga dapat mempercepat waktu untuk pengiriman data. JSON juga fleksibel digunakan untuk pemrograman web, cloud, mobile, dan lain-lain. Tetapi ada pun kekurangan JSON yang perlu dipertimbangkan bahwa kecepatan pengiriman juga akan kurang efisien jika data terlalu besar dan karena kesederhanaanya dalam menulis kode, bisa saja untuk beberapa kasus khusus tipe data yang kompleks tidak tersedia. Dan yang terakhir, kita tidak dapat menambahkan comment pengerjaan pada JSON.
+- Dalam gambar yang saya lampirkan di bawah, saya juga membandingkan JSON dengan bahasa lainnya dan merasa seperti menulis biasa namun ditambah petik dua untuk deklarasi key dan value. Pengiriman data JSON juga dinilai cukup cepat dan rendah dalam ukuran sehingga dapat mempercepat waktu untuk pengiriman data. JSON juga fleksibel digunakan untuk pemrograman web, cloud, mobile, dan lain-lain. Tetapi ada pun kekurangan JSON yang perlu dipertimbangkan bahwa kecepatan pengiriman juga akan kurang efisien jika data terlalu besar dan karena kesederhanaanya dalam menulis kode, bisa saja untuk beberapa kasus khusus tipe data yang kompleks tidak tersedia. Dan yang terakhir, kita tidak dapat menambahkan comment pengerjaan pada JSON.
 
 **Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step**
+- Pada tugas 3, hal pertama yang saya lakukan adalah mengubah routing dari main/ ke / agar saat mengakses URL tidak perlu ada tambahan main/ tapi langsung bisa diakses (saat ini pada local host) saya juga mengaktifkan virtual environment untuk mengisolasi python. Lalu saya membuat kerangka view sebagai dasar web pada base.html dan menambahkan hal tersebut pada TEMPLATES di setting agar masuk sebagai setting dan mengubah main.html yang telah diisi pada tugas sebelumnya namun pada kasus ini, main.html tidak lagi menjadi base namun base.html lah yang menjadi dasar
+- Setelah itu, saya membuat form baru sebagai atribut input produk yang akan saya tampilkan. Karena saya ingin membuat tabel otomatis, maka saya menambahkan direktori forms.py pada direktori main. Di sini ada atribut nama, harga, dan deskripsi yang harus dimiliki oleh objek produk. Sehingga saat form disimpan, akan langsung masuk dalam class Product. Jangan lupa import fungsi tersebut pada views.py. 
+- Lalu tambahkan fungsi baru apabila pengguna berhasil menambahkan produk baru. Jangan lupa tambahkan pastikan isi form valid. Lalu tambahkan fungsi pada show_main agar object Product yang telah dibuat dapat keluar di halaman web. Setelah perubahan, tambahkan path url ke dalam urls.py agar url dapat diakses untuk menambahkan produk.
+- Buat create_product.html baru yang berada pada direktori yang sama dengan main.html untuk tampilan dasar. Isi dari file tersebut harus dapat block untuk form dengan metode POST, meliputi security untuk mencegah serangan bahaya, dan membuat tabel hasil dari produk-produk yang telah dimasukkan. lalu juga terdapat pilihan untuk submit produk baru dan menambahkan produk. Pada main.html juga tambahkan kode untuk pembuatan tabel dan tombol untuk nemambahkan produk baru. Setelah itu, saya mencoba untuk membuka di local host laptop saya agar melihat perkembangan yang telah saya lakukan.
+- Lalu setelah ini ada cara untuk mengembalikan data yang telah dimasukkan dalam format bahasa XML. Pertama kita masukkan "from django.http import HttpResponse" pada views.py yang terletak pada main. Lalu buat sebuat fungsi yaitu show_xml yang akan menyimpan hasil query data pada object produk yang mengembalikan HttpResponse
+- Lalu setiap ada perubahan pada views tambahkan fungsi tersebut pada urls dan masukkan ke dalam path url. Lalu hal yang sama juga dapat dilakukan apabila kita ingin mendapatkan data dalam bahasa JSON. Namun nama fungsinya adalah show_json dan return berupa HTTPResponse dan lalukan penambahan path pada urls.
+- Setelah ini saya akan mencoba untuk mengembalikan urls berdasarkan dengan ID dengan menambahkan "data = Product.objects.filter(pk=id)" dan menambahkan fungsi "def show_xml_by_id(request, id):" dan def "show_json_by_id(request, id):" tambahkan fungsi pada urls.py dan path pattern.
+- Lalu saya akan mencoba melihat perbedaan bagaimana tampilan web saya dengan bahasa HTML, XML, XML by ID, JSON, dan JSON by ID dengan menggunakan aplikasi Postman yang disetting "GET" dan saya mendapatkan hasil seperti dibawah ini.
 
 **Hasil Screenshoot**
+**HTML**
 ![Alt text](foto/html_1.jpg)
 ![Alt text](foto/html_2.jpg)
+Bagaimana program yang tertulis tampil dengan bahasa HTML cirinya ada start tag, content, dan end tag
+
+**JSON**
 ![Alt text](foto/json.jpg)
+
+**JSON by ID**
 ![Alt text](foto/json_ID.jpg)
+JSON memiliki khas key dan value
+
+**XML**
 ![Alt text](foto/xml.jpg)
+
+**XML by ID**
 ![Alt text](foto/xml_ID.jpg)
+Program yang ditulis pada bahasa XML pasti memiliki root
 
 **Referensi**
 Safris, Seva. “A Deep Look at JSON vs. XML, Part 1: The History of Each.” Toptal Engineering, 2023, www.toptal.com/web/json-vs-xml-part-1.
