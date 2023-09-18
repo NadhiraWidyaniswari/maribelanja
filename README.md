@@ -39,8 +39,9 @@ MVVM merupakan Model View ViewModel. Apabila anda ingin fokus pada tampilan apli
 
 **Apa perbedaan antara form POST dan form GET dalam Django?**
 - Setelah mengikuti tutorial 2, saya mendapatkan bahwa perbedaan dari metode POST dan GET adalah
+
 POST | GET
-----|-----
+---------|------------
 POST digunakan untuk mengirimkan data yang dapat dibilang krusial dan tidak dapat dirubah serta tidak ditampilkan dalam URL sehingga tidak mudah untuk di enkripsi | menampilkan data pada web dari server yang mengembalikan HTTP
 POST bisa dipakai untuk memasukkan objek baru seperti pada kasus ini adalah produk barang kecantikan yang memiliki atribut nama, deskripsi, harga, dan tanggal dimasukkannya product | Pengiriman data dalam bentuk query string dimana nanti setiap produk saat ini memiliki ID untuk kemudahan untuk mengakses lewat URL
 Ukuran data yang ditransfer tidak memiliki batasan sehingga aman jika ingin mengirimkan data yang besar | Memiliki batasan ukuran apabila mengirimkan data lewat URL
