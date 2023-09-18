@@ -13,12 +13,12 @@
  - Kita perlu mengaktifkan virtual environment untuk mengisolasi python dan membuat aplikasi baru, di sini saya menggunakan nama 'main' dan kita perlu melakukan konfigurasi pada salah satu file agar aplikasi kita terdaftar. Tepatnya pada direktori mari belanja bagian setting.py. Lalu kita membuat template berbasis bahasa html untuk menampilkan dan melakukan konfigurasi detail tulisan/isi apa saja yang ingin ditampilkan. Saya menambahkan direktori baru bernama templates yang saya buat di dalam direktori lokal aplikasi main dan saya tambahkan bahasa html yang berisi selamat datang, nama dan NPM saya, dan informasi dari salah satu produk yang saya jual. Setelah itu saya mencoba membuka file tersebut untuk melihat tampilan apa yang akan muncul. Namun karena saya belum melakukan git add, commit, dan push maka hal tersebut masih berubah dalam lokal saya saja.
  - Saya menambahkan atribut name, amount, dan description pada file models yang nantinya dapat dipakai untuk instansiasi produk baru secara otomatis dan merubah file view.py untuk mengganti nama produk dan detailnya. Karena pada tugas ini saya belum mengerti bagaimana mengaitkan class pada python dan html. Setelah mengganti salah satu produk yang saya gunakan adalah skintipic, saya mencoba untuk melakukan git add, commit, dan push untuk sinkronisasi perubahan yang saya lakukan dengan direktori online dan saya melakukan deploy ulang hingga tampilan pada web saya berubah menjadi seperti ini.
 
-![Foto Adaptable](fotoadaptable.jpg)
+![Alt text](foto/fotoadaptable.jpg)
 
 Setelah memastikan hal tersebut terjadi. Saya telah berhasil melakukan deploy dan perubahan.
 
 **Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html.**
-![FlowDjango](FlowDjango.jpg)
+![Alt text](foto/FlowDjango.jpg)
 
 - Model View Template merupakan salah satu konsep yang digunakan dalam pengembangan aplikasi. Dimana sudah menjadi hal yang umum untuk menggunakan konsep ini karena terdapat pemisahan beberapa aspek penting menjadi tiga yaitu model, view, dan template.
 - Pada bagan, nomor satu menggambarkan user yang sedang meminta request http pada django dimana nantinya pada nomor dua perintah akan direquest tampilan berupa view. File ini juga dapat dirubah pada view.py yang akan menampilkan tampilan yang berisi data yang akan ditampilkan. Dimana data tersebut diambil ketika mengakses models.py yang berisi atribut-atribut yang akan digunakan yang telah disimpan pada database (5). Template berfungsi sebagai pengatur tampilan antar muka misal besar kecilnya tulisan, posisi tulisan dengan bahasa html yang dipisahkan dengan logika perhitungan pada models yang disusun pada view. Setelah itu baru view mengembalikan tampilan pada URLs(8) yang dapat dilihat oleh user(9). Sehingga ketiga logika ini models, view, dan template saling bergantung karena memang tujuan dari pemisahan ini adalah memungkinkan pengembang untuk bisa bekerja secara terpisah dan lebih teratur dalam mengembangkan aplikasi
@@ -34,3 +34,31 @@ MVVM merupakan Model View ViewModel. Apabila anda ingin fokus pada tampilan apli
 
 **Referensi**
  - Goswami, Vivek. “Coding Ninjas Studio.” Www.codingninjas.com, 30 June 2023, www.codingninjas.com/studio/library/difference-between-mvc-mvp-and-mvvm-architecture-in-android. Accessed 13 Sept. 2023.
+
+**Tugas 3**
+**Apa perbedaan antara form POST dan form GET dalam Django?**
+
+
+**Apa perbedaan utama antara XML, JSON, dan HTML dalam konteks pengiriman data?**
+XML | JSON | HTML
+----------|----------------|------------------
+Dari segi sintaks, XML documents harus memiliki root | Sintaks berkaitan dengan JavaScripts objects |
+
+**Mengapa JSON sering digunakan dalam pertukaran data antara aplikasi web modern?**
+- Menurut saya, dari beberapa gambar yang saya dapatkan dari metode GET di postman, saya merasa bahwa JavaScript Object Notation mudah untuk dibaca dan format yang digunakan dalam bahasa pemrograman cukup mudah berupa dictionary pasangan key dan value. Lalu pada JSON dapat digunakan bahasa pemrograman lain seperti PHP, Python, C++, dan Ruby. Pada awalnya bahasa pemrograman ini memiliki dasar JavaScript. Sehingga awal mula popularitas JSON juga diawali denngan banyaknya penggunaan JavaScript. Dan data yang tersimpan dalam JSON dapat digunakan/impor pada JavaScript.
+
+Dalam gambar yang saya lampirkan di bawah, saya juga membandingkan JSON dengan bahasa lainnya dan merasa seperti menulis biasa namun ditambah petik dua untuk deklarasi key dan value. Pengiriman data JSON juga dinilai cukup cepat dan rendah dalam ukuran sehingga dapat mempercepat waktu untuk pengiriman data. JSON juga fleksibel digunakan untuk pemrograman web, cloud, mobile, dan lain-lain. Tetapi ada pun kekurangan JSON yang perlu dipertimbangkan bahwa kecepatan pengiriman juga akan kurang efisien jika data terlalu besar dan karena kesederhanaanya dalam menulis kode, bisa saja untuk beberapa kasus khusus tipe data yang kompleks tidak tersedia. Dan yang terakhir, kita tidak dapat menambahkan comment pengerjaan pada JSON.
+
+**Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step**
+
+**Hasil Screenshoot**
+![Alt text](foto/html_1.jpg)
+![Alt text](foto/html_2.jpg)
+![Alt text](foto/json.jpg)
+![Alt text](foto/json_ID.jpg)
+![Alt text](foto/xml.jpg)
+![Alt text](foto/xml_ID.jpg)
+
+**Referensi**
+Safris, Seva. “A Deep Look at JSON vs. XML, Part 1: The History of Each.” Toptal Engineering, 2023, www.toptal.com/web/json-vs-xml-part-1.
+
