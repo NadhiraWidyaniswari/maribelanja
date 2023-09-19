@@ -8,10 +8,12 @@ from main.models import Product
 
 def show_main(request):
     products = Product.objects.all()
-
+    
+    total_produk = products.count()
     context = {
         'name': 'Nadhira Widyaniswari', # Nama kamu
         'class': 'PBP E', # Kelas PBP kamu
+        'total_produk': total_produk,
         'products': products
     }
 
