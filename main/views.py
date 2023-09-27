@@ -86,9 +86,24 @@ def logout_user(request):
     response.delete_cookie('last_login')
     return response
 
-
+@login_required(login_url='/login')
 def delete_product(request, id):
     products = Product.objects.filter(user=request.user).filter(pk=id)
     products.delete()
     return redirect('main:show_main')
+
+@login_required(login_url='/login')
+def add_product(request, id):
+    products = Product.objects.filter(user=request.user).filter(pk=id).first()
+    products.amount += 1
+    products.save()
+    return HttpResponseRedirect(reverse("main:show_main")) 
+
+@login_required(login_url='/login')
+def sub_product(request, id):
+    products = Product.objects.filter(user=request.user).filter(pk=id).first()
+    if products.amount > 0:
+        products.amount -= 1
+        products.save()
+    return HttpResponseRedirect(reverse("main:show_main")) 
 
