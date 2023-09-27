@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect
 from main.forms import ProductForm
 from django.urls import reverse
@@ -85,3 +85,10 @@ def logout_user(request):
     response = HttpResponseRedirect(reverse('main:login'))
     response.delete_cookie('last_login')
     return response
+
+
+def delete_product(request, id):
+    products = Product.objects.filter(user=request.user).filter(pk=id)
+    products.delete()
+    return redirect('main:show_main')
+
