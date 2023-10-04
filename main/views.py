@@ -18,7 +18,6 @@ def show_main(request):
     total_produk = products.count()
     context = {
         'name': request.user.username, # Nama kamu
-        'class': 'PBP E', # Kelas PBP kamu
         'total_produk': total_produk,
         'products': products,
         'last_login': request.COOKIES['last_login'],
@@ -90,7 +89,7 @@ def logout_user(request):
 def delete_product(request, id):
     products = Product.objects.filter(user=request.user).filter(pk=id)
     products.delete()
-    return redirect('main:show_main')
+    return HttpResponseRedirect(reverse('main:show_main'))
 
 @login_required(login_url='/login')
 def add_product(request, id):
@@ -106,4 +105,19 @@ def sub_product(request, id):
         products.amount -= 1
         products.save()
     return HttpResponseRedirect(reverse("main:show_main")) 
+
+def edit_product(request, id):
+    # Get product berdasarkan ID
+    product = Product.objects.get(pk = id)
+
+    # Set product sebagai instance dari form
+    form = ProductForm(request.POST or None, instance=product)
+
+    if form.is_valid() and request.method == "POST":
+        # Simpan form dan kembali ke halaman awal
+        form.save()
+        return HttpResponseRedirect(reverse('main:show_main'))
+
+    context = {'form': form}
+    return render(request, "edit_product.html", context)
 

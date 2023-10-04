@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
+
 <div class="bg-green-200 p-4">
-    <h1 class="text-2xl font-semibold">Mari belanja - Add New Product</h1>
+    <h1 class="text-2xl font-semibold">Edit Product</h1>
 
     <form method="POST">
         {% csrf_token %}
@@ -11,10 +12,11 @@
             <tr>
                 <td></td>
                 <td>
-                    <input class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition duration-300 cursor-pointer" type="submit" value="Add Product"/>
+                    <input class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition duration-300 cursor-pointer" type="submit" value="Edit Product"/>
                 </td>
             </tr>
         </table>
     </form>
 </div>
+
 {% endblock %}

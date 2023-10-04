@@ -5,41 +5,36 @@
 {% endblock meta %}
 
 {% block content %}
-
-<div class = "login">
-
-    <h1>Login</h1>
-
-    <form method="POST" action="">
-        {% csrf_token %}
-        <table>
-            <tr>
-                <td>Username: </td>
-                <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
-            </tr>
-                    
-            <tr>
-                <td>Password: </td>
-                <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
-            </tr>
-
-            <tr>
-                <td></td>
-                <td><input class="btn login_btn" type="submit" value="Login"></td>
-            </tr>
-        </table>
-    </form>
-
-    {% if messages %}
-        <ul>
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}     
+<div class="min-h-screen flex items-center justify-center bg-green-200">
+    <div class="max-w-md w-full bg-white p-8 space-y-4 rounded-lg shadow-md">
+        <h1 class="text-4xl font-semibold">Login - Mari Belanja</h1>
         
-    Don't have an account yet? <a href="{% url 'main:register' %}">Register Now</a>
+        <form method="POST" action="">
+            {% csrf_token %}
+            <div class="space-y-3">
+                <label for="username" class="block text-sm font-medium text-gray-800">Username:</label>
+                <input type="text" name="username" id="username" placeholder="Username" class="w-full border rounded-md px-3 py-2" />
+            </div>
+            
+            <div class="space-y-2">
+                <label for="password" class="block text-sm font-medium text-gray-800">Password:</label>
+                <input type="password" name="password" id="password" placeholder="Password" class="w-full border rounded-md px-3 py-2" />
+            </div>
 
+            <div class="mt-5">
+                <input type="submit" value="Login" class="w-full bg-green-500 text-white font-semibold rounded-md py-2 hover:bg-green-600 transition duration-300 cursor-pointer" />
+            </div>
+        </form>
+
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li class="text-red-500">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <p class="mt-3">Don't have an account yet? <a href="{% url 'main:register' %}" class="text-blue-500 hover:underline">Register Now</a></p>
+    </div>
 </div>
-
 {% endblock content %}

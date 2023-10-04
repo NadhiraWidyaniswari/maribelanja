@@ -1,52 +1,84 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Shopping List Page</h1>
+<nav class="navbar navbar-expand-lg" style="background-color: #A7F3D0;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Mari Belanja</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Penjualan</a>
+          </li>
+        </ul>
+        <a class="d-flex mr-4" href="#">log in as {{name}}</a>
+        <form class="d-flex" action="{% url 'main:logout' %}" method="post">
+            {% csrf_token %}
+            <button class="btn btn-outline-success" type="submit">Logout</button>
+        </form>
+      </div>
+    </div>
+  </nav>
 
-    <h5>Name:</h5>
-    <p>{{name}}</p>
+<div class="container mx-auto mt-8">
+    <h1 class="text-3xl font-semibold">Welcome {{name}}!</h1>
 
-    <h5>Class:</h5>
-    <p>{{class}}</p>
+    <h4 class="mt-4">Products: {{ total_produk }}</h4>
+    <table class="w-full mt-4 border-collapse border border-green-600">
+        <thead>
+            <tr>
+                <th class="border border-green-600 bg-green-200">Name</th>
+                <th class="border border-green-600 bg-green-200">Price</th>
+                <th class="border border-green-600 bg-green-200">Amount</th>
+                <th class="border border-green-600 bg-green-200">Description</th>
+                <th class="border border-green-600 bg-green-200">Date Added</th>
+                <th class="border border-green-600 bg-green-200">Edit</th>
+                <th class="border border-green-600 bg-green-200">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
+            {% for product in products %}
+                <tr>
+                    <td class="border border-green-600">{{product.name}}</td>
+                    <td class="border border-green-600">{{product.price}}</td>
+                    <td class="border border-green-600">
+                        <a href="sub_product/{{product.pk}}">
+                            <button class="bg-green-500 text-white px-2 py-1 rounded-lg hover:bg-blue-600 transition duration-300">-</button>
+                        </a>
+                        {{product.amount}}
+                        <a href="add_product/{{product.pk}}">
+                            <button class="bg-green-500 text-white px-2 py-1 rounded-lg hover:bg-blue-600 transition duration-300">+</button>
+                        </a>
+                    </td>
+                    <td class="border border-green-600">{{product.description}}</td>
+                    <td class="border border-green-600">{{product.date_added}}</td>
+                    <td class="border border-green-600">
+                        <a href="{% url 'main:edit_product' product.pk %}">
+                            <button class="bg-green-500 text-white px-2 py-1 rounded-lg hover:bg-green-600 transition duration-300">Edit</button>
+                        </a>
+                    </td>
+                    <td class="border border-green-600">
+                        <a href="delete_product/{{product.pk}}">
+                            <button class="bg-black text-white px-2 py-1 rounded-lg hover:bg-red-600 transition duration-300">Delete</button>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
-    <h4>Jumlah Produk dijual: {{ total_produk }} </h4>
-<table>
-    <tr>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Amount</th>
-        <th>Description</th>
-        <th>Date Added</th>
-        <th>Delete</th>
-    </tr>
+    <div class="mt-4">
+        <a href="{% url 'main:create_product' %}">
+            <button class="bg-green-500 text-white px-2 py-1 rounded-lg hover:bg-green-600 transition duration-300">Add New Product</button>
+        </a>
+    </div>
 
-    {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
-
-    {% for product in products %}
-        <tr>
-            <td>{{product.name}}</td>
-            <td>{{product.price}}</td>
-            <td><a href="sub_product/{{product.pk}}"><button>-</button></a> {{product.amount}}<a href="add_product/{{product.pk}}"> <button>+</button></a></td>
-            <td>{{product.description}}</td>
-            <td>{{product.date_added}}</td>
-            <td><a href="delete_product/{{product.pk}}"><button>Delete</button></a></td>
-        </tr>
-    {% endfor %}
-</table>
-
-<br />
-
-<a href="{% url 'main:create_product' %}">
-    <button>
-        Add New Product
-    </button>
-</a>
-
-<h5>Sesi terakhir login: {{ last_login }}</h5>
-
-<a href="{% url 'main:logout' %}">
-    <button>
-        Logout
-    </button>
-</a>
+    <h5 class="mt-4">Sesi terakhir login: {{ last_login }}</h5>
+</div>
 {% endblock content %}

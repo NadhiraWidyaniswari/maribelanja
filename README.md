@@ -127,3 +127,32 @@ Bukti dari saya telah melakukan checklist.
 ![Alt text](foto/admin1.png)
 ![Alt text](foto/admin2.png)
 ![Alt text](foto/logout.png)
+
+-------------------------------------------
+**Tugas 5**
+**Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya.**
+- Pada konteks ini, saya akan membahas dalam bahasa CSS (Cascading Style Sheets) dimana kita dapat menggunakan bahasa ini untuk kustomisasi halaman web. Terdapat kemudahan dalam CSS yaitu Element selector yaitu kita dapat mengatur secara berkelompok beberapa item yang memiliki tag HTML yang sama. Misal kita mempunya beberapa huruf dalam tag <h5> dimana kita ingin tulisan kecil muncul dalam halaman web kita. Dan kita bisa setting secara global dalam halaman web tersebut apabila kita ingin tulisan yang memiliki ukuran tersebut memiliki warna, padding, margin yang sama. Seperti dalam tugas ini, saya melihat terdapat peluang untuk menyamakan pada saat saya menggunakan tag pada tabel yang saya buat. 
+- Lalu terdapat jenis lain seperti ID selector, kita dapat menambah id = " " lalu menggunakan # untuk penulisannya apabila kita ingin mengelompokan id-id yang sama. Dan terdapat class selector juga untuk menentuka beberapa tag yang memiliki class yang sama. Semua hal tersebut untuk kustomisasi secara efisien jika terdapat beberapa elemen yang memiliki kesamaan warna, margin, dan sebagainya.
+
+**Jelaskan HTML5 Tag yang kamu ketahui.**
+- HTML5 merupakan produk kembangan dari HTML sebelumnya yang telah memiliki perkembangan sesuai dengan 
+web moder, seperti dapat lebih interaktif dalam web. Beberapa tag baru adalah <video> dan <audio> yang dapat memasukkan video dan audio ke dalam halaman web. 
+- Beberapa hal lainnya terdapat validasi seperti email untuk input, pengecekkan nomor telepon yang dapat mempermudah validasi input. Dalam HTML 5 juga terdapat penyimpanan kecil dari aplikasi web dari sisi pengguna. Ini dapat menjadi subsitusi penggunaaan cookies. Secara penulisan juga dapat lebih sederhana menjadi bagian bagian seperti header, artickle, nav, footer tidak perlu pakai class seperti HTML. Improvisasi semantik pada elemen juga berkembang pada HTML5. Dan perkembangannya dari tahun 2015 hingga sekarang yang sudah meningkatnya kemudahan untuk mengakses API.
+**Jelaskan perbedaan antara margin dan padding.**
+- Perbedaan antara margin dan padding, dalam hal ini saya membahasnya dalam konteks CSS adalah margin merupakan jarak antara container terluar dengan content di dalamnya seperti box-box dalam user interface. Margin merupakan jarak diluar dari border dengan misal ukuran ps dari layar laptop. Ukuran border dapat berisi angka negatif ataupun bilangan tidak bulat
+- Sementara itu padding merupakan jarak content dengan border (pemahaman saya) dimana border merupakan kotak awal maka misal terdapat isi dari border ke tulisan itulah yang dinamakan padding. Nilai padding tidak dapat dikustom secara otomatis dan tidak bisa bernilai negatif.
+
+**Jelaskan perbedaan antara framework CSS Tailwind dan Bootstrap. Kapan sebaiknya kita menggunakan Bootstrap daripada Tailwind, dan sebaliknya?**
+- Untuk melakukan pengembangan tampilan dalam halaman web. Kita dapat menggunakan framework CSS yang cukup populer seperti bootstrap dan Tailwind. Terdapat perbedaan secara umum antara kedua framework tersebut dimana dalam menggunakan bootstrap terdapat komponen siap pakai sehingga tidak perlu menuliskan kode ulang secara menyeluruh. Secara umum untuk pemula disarankan untuk menggunakan bootstrap karena memiliki sintaks yang lebih mudah untuk dipahami karena komponen telah didefinisikan, dan karena itu tampilan dapat lebih konsisten. File CSS yang digunakan lebih besar karena sudah banyak komponen yang sudah didefinisikan.
+- Sementara itu tailwind membangun komponen tersebut dengan class-class yang didefinisikan sehingga terdapat sedikit perubahan file CSS. Pengembangan dalam tailwind juga sangat luas karena flesibiltas yang tinggi dan pengguna lebih mudah untuk kustomisasi elemen-elemen yang ada. Namun disarankan memiliki pemahaman terhadap bahasa ini karena terdapat banyak hal yang perlu disiapkan dalam mengembangkan proyek
+
+
+**Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).**
+
+- Pertama-tama, karena kita ingin menambahkan framework ke dalam proyek, kita perlu menambahkan tag  untuk CSS, bootstrap dan JS. Di sini saya juga menambahkan tailwind karena saya menggunakan framework tersebut. Saya juga menambahkan navbar yang berisi penjualan dan tulisan log in sebagai siapa. Saya juga menambah fitur edit pada program saya agar penjual bisa mengubah harga, deskripsi produk, dan nama produk. Saya menambahkan fungsi pada views.py dan mengatur path pada URL py serta menambahkan base pada edit_product.html.
+- Lalu saya mencoba mengatur tampilan dengan memberi warna-warna dasar. Karena saya menggunakan tailwind saya harus menambahkan class-class pada setiap .html seperti setting warna untuk latar bernuansa hijau. Saya mendefinisikan classnya, typenya, warna, padding, ukuran font, dan masih banyak yang lainnya. Saya melakukan semua perubahan pada create_product.html, main.html, login.html, register.html, dan edit_product.html. Saya masih mempelajari bahasa tersebut sehingga pada tugas ini saya baru mengganti tampilan dasar dan mulai belajar apa saja yang bisa dikustomisasi oleh tailwind.
+
+**Referensi**
+https://www.hostinger.in/tutorials/difference-between-html-and-html5#:~:text=HTML5%20is%20the%20latest%20version%20of%20HTML%20and%20supports%20new,also%20supports%20audio%20and%20video.&text=HTML%20does%20not%20provide%20native,native%20audio%20and%20video%20support.
+
+https://www.geeksforgeeks.org/css-padding-vs-margin/
