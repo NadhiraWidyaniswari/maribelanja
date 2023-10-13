@@ -1,2 +1,2 @@
 release: django-admin migrate --noinput
-web: gunicorn belanja.wsgi
+web: gunicorn maribelanja.wsgi
