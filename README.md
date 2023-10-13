@@ -174,6 +174,18 @@ Setelah mengerjakan tugas 6, saya memahami bahwa asynchronous programming pada a
 - Sementara Jquery memang menyediakan library yang lengkap. Menurut sumber yang saya baca, apabila kita banyak menggunakan operasi DOM sebaiknya menggunakan penerapan ini. Karena ajax function juga sudah memiliki singkatan dalam kemudahan dalam penggunaannya. Lalu karena Jquery termasuk penerapan yang sudah lama, banyak kompabilitas yang dapat dijangkau dengan penerapan ini.
 
 **Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).**
+- Hal pertama yang saya lakukan adalah membuat memahami apa itu konsep ajax. Pertama-tama saya membuat fungsi untuk mengembalikan data dalam JSON, karena pada tugas ini saya menggunakan penerapan fetch. Dalam metode ini diambil data products dan dikembalikan dalam bahasa JSON. Setelah itu saya membuat fungsi untuk menambah produk, beda dengan sebelumnya yang menggunakan form, kali ini menggunakan modal diadaptasi dengan form. Saya menambahkan fungsi add_product_ajax dengan parameter request untuk mengambil nama, harga, stok, dan deskripsi. Setelah itu seperti biasa kita menambahkannya pada urls.py untuk path yaitu, 'get-product/' dan 'create-product-ajax/'
+- Setelah itu saya pada tugas 6 ini telah mengganti tabel saya menjadi penggunaan cards dan menambah script untuk fungsi getProducts() dan menambahkan setting card yang disesuaikan dengan entity yang dimiliki oleh products.
+
+- Saya juga menambahkan modal bootstrap yang berisi pop up form menggantikan fungsi form yang sebelumnya. Saya juga menambahkan button agar dapat memunculkan form saat ingin menambah produk. Lalu juga perlu menambahkan function addproduct() dalam blok script agar fungsi tersebut dapat dijalankan dan dibuat form data baru untuk menyimpan setiap item lalu disetting untuk apabila button pada modal dipencet maka akan menjalankan fungsi menambah product.
+
+- Saya juga menambah design dengan memberikan warna pada tampilan dan saya juga masih menggunakan edit dan delete button fungsi pada tugas sebelumnnya. Saya juga melakukan collectstatic dengan menambahkan static files root pada  setting.py dan melakukan perintah pada cmd root file dengan python manage.py collectstatic.
+Collectstatic berfungsi mengambil file situs web saya seperti CSS, JavaScript, dan gambar. Saya membuat root untuk tempat nanti saya menaruh static files.
+
+- Lalu saya melakukan deployment dengan cara menambahkan beberapa hal seperti django-environ pada requirements yang harus diinstal. Saya juga mendambahkan file Procfile yang berisi release: django-admin migrate --noinput dan web: gunicorn maribelanja.wsgi. Saya juga membuat folder baru .github yang berisi workflows agar branch main lah yang dideploy seta .dockergignore agar beberapa hal tidak ikut di push. Saya juga menambahkan Dockerfile pada root folder dan mengimpor environ pada setting folder mari belanja. Saya juga menambahkan secrets dan variabel dengan 3 hal yaitu name, server IP, dan ssh key. Setelah itu saya akan mencoba untuk push, namun saat ini saya belum berhasil deploy.
+
+
+
 
 
 **Referensi**
