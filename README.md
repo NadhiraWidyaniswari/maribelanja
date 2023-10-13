@@ -156,3 +156,25 @@ web moder, seperti dapat lebih interaktif dalam web. Beberapa tag baru adalah <v
 https://www.hostinger.in/tutorials/difference-between-html-and-html5#:~:text=HTML5%20is%20the%20latest%20version%20of%20HTML%20and%20supports%20new,also%20supports%20audio%20and%20video.&text=HTML%20does%20not%20provide%20native,native%20audio%20and%20video%20support.
 
 https://www.geeksforgeeks.org/css-padding-vs-margin/
+
+**Tugas6**
+**Jelaskan perbedaan antara asynchronous programming dengan synchronous programming.**
+- Menurut pemahaman saya, asynchronous programming merupakan pendekatan kode dimana urutan kode dijalankan tidak berurutan dan bisa dilakukan bersama-sama. Hal ini sangat berbeda dengan synchronous, dimana program akan dieksekusi secara berurutan sesuai dengan urutan kode yang ditulis. Ketika satu program dieksekusi, maka program lain akan menunggu sampai program pertama selesai untuk dieksekusi. Pemrograman asynchronous biasanya dapat menjadi pemrograman background yang tidak dapat di blocking layaknya latar belakang yang selalu dijalankan, sementara pemrograman synchronous bersifat blocking, dimana ketika suatu program sudah berjalan, program lain akan menunggu dan tidak bisa berjalan hingga program yang sudah berjalan duluan selesai untuk dieksekusi. 
+- Terdapat istilah yang sering digunakan dalam pemrograman async dimana terdapat kata await yang membuat kode tersebut seperti kode synchronous. Dalam kode yang saya buat, fungsi getproducts merupakan fungsi async karena kita perlu mendapatkan data product yang ada segera, tidak bisa menunggu program yang lain dijalankan
+
+**Dalam penerapan JavaScript dan AJAX, terdapat penerapan paradigma event-driven programming. Jelaskan maksud dari paradigma tersebut dan sebutkan salah satu contoh penerapannya pada tugas ini.**
+- Merupakan pendekatan pemrograman sesuai dengan adanya event, hal ini seperti button-click, gerakan mouse, yang menyebabnya terjadi seperti interupsi alur program. Biasanya respons ini termasuk dalam asychronous, karena membutuhkan respon yang cepat. 
+-  Dari proses tersebut terdapat event handling yang dapat melakukan interupsi tersebut. Pada kode saya terdapat kode "document.getElementById("button_add").onclick = addProduct" dimana akan memberikan signal apabila button dengan id tersebut diklik akan memanggil fungsi add product. Kita juga menggunakaannya untuk berkomunikasi dengan server tanpa melakukan refresh saat menambah product. Paradigma ini sangat penting mengingat ingin menciptakan web yang interaktif.
+
+**Jelaskan penerapan asynchronous programming pada AJAX.**
+Setelah mengerjakan tugas 6, saya memahami bahwa asynchronous programming pada ajax memungkinkan komunikasi antara server dan klien tanpa mengganggu fungsionalitas atau eksekusi program yang sedang berjalan. Konsep ini sangat penting, salahs atunya pada pengambilan data dari server, agar data terbaru dapat langsung terupdate tanpa membutuhkan waktu yang lama. Kita juga menggunakan asynchronous programming pada saat handle event programming, dimana saya menggunakan click button. Jadi saat saya memencet sebuah button, akan langsung muncul handle dari event tersebut seperti interupsi
+
+**Pada PBP kali ini, penerapan AJAX dilakukan dengan menggunakan Fetch API daripada library jQuery. Bandingkanlah kedua teknologi tersebut dan tuliskan pendapat kamu teknologi manakah yang lebih baik untuk digunakan.**
+- Fetch API, merupakan salah satu kembangan Javascript modern yang menurut saya akan lebih cocok dengan perkembangan perkembangan web saat ini. Saat menggunakannya, kita tidak perlu mengunduh library eksternal. Lalu juga menggunakan konsep promise yang dapat memudahkan saat menggunakan function asynchronous dalam mengelola respon. Ia juga sudah mendukung banyak permintaan HTTP dengan berbagai pilihan. Apabila anda ingin mengembangkan web yang simpel dan mengikuti perkembangan zaman dapat menggunakan Fetch API
+- Sementara Jquery memang menyediakan library yang lengkap. Menurut sumber yang saya baca, apabila kita banyak menggunakan operasi DOM sebaiknya menggunakan penerapan ini. Karena ajax function juga sudah memiliki singkatan dalam kemudahan dalam penggunaannya. Lalu karena Jquery termasuk penerapan yang sudah lama, banyak kompabilitas yang dapat dijangkau dengan penerapan ini.
+
+**Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).**
+
+
+**Referensi**
+https://medium.com/javascript-indonesia-community/berbagai-teknik-dan-cara-melakukan-fetch-api-menggunakan-javascript-yang-harus-kamu-ketahui-5a94f361643a

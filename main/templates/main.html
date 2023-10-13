@@ -25,59 +25,113 @@
     </div>
   </nav>
 
-<div class="container mx-auto mt-8">
-    <h1 class="text-3xl font-semibold">Welcome {{name}}!</h1>
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Product</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  <form id="form" onsubmit="return false;">
+                      {% csrf_token %}
+                      <div class="mb-3">
+                          <label for="name" class="col-form-label">Name:</label>
+                          <input type="text" class="form-control" id="name" name="name"></input>
+                      </div>
+                      <div class="mb-3">
+                          <label for="price" class="col-form-label">Price:</label>
+                          <input type="number" class="form-control" id="price" name="price"></input>
+                      </div>
+                      <div class="mb-3">
+                        <label for="amount" class="col-form-label">Amount:</label>
+                        <input type="number" class="form-control" id="amount" name="amount"></input>
+                    </div>
+                      <div class="mb-3">
+                          <label for="description" class="col-form-label">Description:</label>
+                          <textarea class="form-control" id="description" name="description"></textarea>
+                      </div>
+                  </form>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" id="button_add" data-bs-dismiss="modal">Add Product</button>
+              </div>
+          </div>
+      </div>
+  </div>
+  
+  <br />
 
-    <h4 class="mt-4">Products: {{ total_produk }}</h4>
-    <table class="w-full mt-4 border-collapse border border-green-600">
-        <thead>
-            <tr>
-                <th class="border border-green-600 bg-green-200">Name</th>
-                <th class="border border-green-600 bg-green-200">Price</th>
-                <th class="border border-green-600 bg-green-200">Amount</th>
-                <th class="border border-green-600 bg-green-200">Description</th>
-                <th class="border border-green-600 bg-green-200">Date Added</th>
-                <th class="border border-green-600 bg-green-200">Edit</th>
-                <th class="border border-green-600 bg-green-200">Delete</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
-            {% for product in products %}
-                <tr>
-                    <td class="border border-green-600">{{product.name}}</td>
-                    <td class="border border-green-600">{{product.price}}</td>
-                    <td class="border border-green-600">
-                        <a href="sub_product/{{product.pk}}">
+  <div id="product_cards" class="all-product d-flex flex-wrap align-content-start gap-4"></div>
+
+
+  <button type="button" class="bg-green-500 text-white px-2 py-1 rounded-lg hover:bg-green-600 transition duration-300" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Product</button>
+
+  <script>
+      async function getProducts() {
+        return fetch("{% url 'main:get_product_json' %}").then((res) => res.json())
+    }
+
+      async function refreshProducts() {
+        document.getElementById("product_cards").innerHTML = ""
+        const products = await getProducts()
+        let htmlString = `
+        <div class="container mx-auto mt-4">
+            <h1 class="text-3xl font-semibold">Welcome {{name}}!</h1>
+            <h4 class="mt-4">Products: ${products.length}</h4>
+          </div>
+        `
+        products.forEach((item) => {
+            htmlString += `\n
+            <div class="card" style="width: 15 rem; height: 220px; background-color: #96CCA8; padding: 20px; margin: 20px; border: 1px solid #000;">
+                <div class="card-body">
+                  <h4 class="card-title" style="background-color: white; color: black; padding: 5px; border-radius: 10px; display: inline-block;">${item.fields.name}</h4>
+                    <p class="card-harga">Rp. ${item.fields.price}</p>
+                    <p class="card-stok">
+                      <a href="sub_product/${item.pk}">
                             <button class="bg-green-500 text-white px-2 py-1 rounded-lg hover:bg-blue-600 transition duration-300">-</button>
                         </a>
-                        {{product.amount}}
-                        <a href="add_product/{{product.pk}}">
+                        ${item.fields.amount}
+                        <a href="add_product/${item.pk}">
                             <button class="bg-green-500 text-white px-2 py-1 rounded-lg hover:bg-blue-600 transition duration-300">+</button>
-                        </a>
-                    </td>
-                    <td class="border border-green-600">{{product.description}}</td>
-                    <td class="border border-green-600">{{product.date_added}}</td>
-                    <td class="border border-green-600">
-                        <a href="{% url 'main:edit_product' product.pk %}">
-                            <button class="bg-green-500 text-white px-2 py-1 rounded-lg hover:bg-green-600 transition duration-300">Edit</button>
-                        </a>
-                    </td>
-                    <td class="border border-green-600">
-                        <a href="delete_product/{{product.pk}}">
-                            <button class="bg-black text-white px-2 py-1 rounded-lg hover:bg-red-600 transition duration-300">Delete</button>
-                        </a>
-                    </td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+                        </a> 
+                     </p>
+                    <p class="card-text">${item.fields.description}</p>
+                    <a href='edit-product/${item.pk}'><button class="bg-green-500 text-white px-2 py-1 rounded-lg hover:bg-green-600 transition duration-300">Edit</button></a>
+                    <a href='delete_product/${item.pk}'><button class="bg-black text-white px-2 py-1 rounded-lg hover:bg-red-600 transition duration-300">Delete</button></a>
+                </div>
+            </div>` 
+        })
 
-    <div class="mt-4">
-        <a href="{% url 'main:create_product' %}">
-            <button class="bg-green-500 text-white px-2 py-1 rounded-lg hover:bg-green-600 transition duration-300">Add New Product</button>
-        </a>
-    </div>
+        document.getElementById("product_cards").innerHTML = htmlString
+    }
+      refreshProducts()
+
+      function addProduct() {
+          fetch("{% url 'main:add_product_ajax' %}", {
+              method: "POST",
+              body: new FormData(document.querySelector('#form'))
+          }).then(refreshProducts)
+
+          document.getElementById("form").reset()
+          return false
+      }
+
+      function deleteproduct(id){
+        fetch("{% url 'main:delete_product_ajax ${id}'}", {
+              method: "POST",
+              body: new FormData(document.querySelector('#form'))
+          }).then(refreshProducts)
+          return false
+
+      }
+
+
+      
+      refreshProducts()
+      document.getElementById("button_add").onclick = addProduct
+  </script>
 
     <h5 class="mt-4">Sesi terakhir login: {{ last_login }}</h5>
 </div>
