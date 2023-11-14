@@ -2,7 +2,6 @@
 - Nama    :Nadhira Widyaniswari
 - NPM     :2206811884
 - Kelas   :PBP E
-- Link deploy: https://maribelanja.adaptable.app/main/
 
 **Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step**
  - Inti pada tugas 2 ini adalah membuat proyek dan aplikasi baru sebagai implementasi tutorial yang telah dikerjakan. Langkah pertama yang saya lakukan adalah membuat direktori lokal pada laptop saya dimana nantinya saya akan mengerjakan proyek django dan sinkronisasi dengan direktori online di github. Lalu pada direktori utama saya membuka command prompt dan melakukan inisiasi github karena nantinya akan dilakukan push/pull sinkronisasi antara penyimpanan lokal dan online. Saya juga menambahkan README.md yang merupakan file ini untuk mempermudah pembukaan link deploy.
