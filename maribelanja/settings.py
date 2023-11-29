@@ -158,4 +158,5 @@ CORS_ALLOW_HEADERS = [
     'access-control-allow-origin',
 ]
 
+CSRF_TRUSTED_ORIGINS = ["https://nadhira-widyaniswari-tugas.pbp.cs.ui.ac.id"]
 
